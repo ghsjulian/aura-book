@@ -36,7 +36,9 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node"],
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules",
