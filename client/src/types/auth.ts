@@ -1,0 +1,34 @@
+export interface User {
+    _id: string;
+    name: string;
+    email: string;
+    profileImage: string
+    role: string
+    isActive: boolean
+    createdAt: string
+    updatedAt: string
+    __v: number
+}
+
+export interface AuthState {
+    user: User | null;
+    token: string | null;
+    isLoading: boolean;
+    error: string | null;
+}
+
+export interface AuthResponse {
+    user: User;
+    token: string;
+    success: boolean
+    message: string
+}
+
+export interface LoginPayload {
+    email: string;
+    password: string;
+}
+
+export interface RegisterPayload extends LoginPayload {
+    name: string;
+}

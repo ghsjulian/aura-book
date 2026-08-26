@@ -1,0 +1,20 @@
+info:
+  name: Get User
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:3000/api/v1/auth/get-user?id=6a8b1659fd1025fc2891f0db
+  params:
+    - name: id
+      value: 6a8b1659fd1025fc2891f0db
+      type: query
+  auth:
+    type: digest
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

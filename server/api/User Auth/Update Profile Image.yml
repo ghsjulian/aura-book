@@ -1,0 +1,22 @@
+info:
+  name: Update Profile Image
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/api/v1/auth/user-profile
+  body:
+    type: multipart-form
+    data:
+      - name: avatar
+        type: file
+        value:
+          - test-avatar.png
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

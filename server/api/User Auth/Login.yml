@@ -1,0 +1,22 @@
+info:
+  name: Login
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: http://localhost:3000/api/v1/auth/user-login
+  body:
+    type: json
+    data: |-
+      {
+          "email" : "ghsjulian@gmail.com",
+          "password": "myPassword123#"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
