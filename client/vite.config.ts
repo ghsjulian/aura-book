@@ -9,4 +9,5 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom', 'react-redux'], // 👈 Forces single React instance
   },
+  base: '/',
 })
