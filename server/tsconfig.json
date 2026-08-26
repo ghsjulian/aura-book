@@ -3,6 +3,7 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "target": "ES2022",
+    "moduleResolution": "bundler",
     "module": "ESNext",
     "sourceMap": true,
     "declaration": true,
