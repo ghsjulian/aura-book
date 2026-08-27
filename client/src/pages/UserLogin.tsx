@@ -12,12 +12,14 @@ import {
   loginFailure,
 } from "../store/slices/auth.slice";
 import { loginApi } from "../services/auth.services";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { EyeOff } from "lucide-react";
 
 const UserLogin = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const msgRef = useRef<null>(null);
   const dispatch = useAppDispatch();
   const { isLoading } = useAppSelector((state) => state.auth);
@@ -82,14 +84,14 @@ const UserLogin = () => {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
               />
             </svg>
-            <span>Google</span>
+            <span>Signin With Google</span>
           </a>
 
           <a href="#" className="social-btn">
             <svg viewBox="0 0 24 24" fill="#181717">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
             </svg>
-            <span>GitHub</span>
+            <span>Signin With GitHub</span>
           </a>
         </div>
 
@@ -121,13 +123,41 @@ const UserLogin = () => {
                 <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
               </svg>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 placeholder="••••••••"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
+              <button
+                onClick={() => setShowPassword(!showPassword)}
+                type="button"
+                className="show-pass"
+              >
+                {showPassword ? (
+                  <EyeOff width="18px" height="18px" />
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      strokeLinejoin="round"
+                      d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      strokeLinejoin="round"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                )}
+              </button>
             </div>
           </div>
           <div className="form-options">
@@ -135,9 +165,9 @@ const UserLogin = () => {
               <input type="checkbox" name="remember" />
               <span>Remember me</span>
             </label>
-            <a href="#" className="forgot-pass">
+            <NavLink to="/forget-password" className="forgot-pass">
               Forgot Password?
-            </a>
+            </NavLink>
           </div>
           <button disabled={isLoading} type="submit" className="submit-btn">
             {/* <div className="spinner"></div> */}
@@ -152,7 +182,8 @@ const UserLogin = () => {
         </form>
 
         <div className="signup-prompt">
-          Don't have an account? <a href="#">Book a Consultation</a>
+          Don't have an account?{" "}
+          <NavLink to="/user-signup">Book a Consultation</NavLink>
         </div>
       </div>
     </section>

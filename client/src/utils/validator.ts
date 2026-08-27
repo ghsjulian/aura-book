@@ -94,13 +94,16 @@ export const validateAuthCredentials = (
 };
 
 export const showMessage = (element: any, isError: boolean, msg: string): void => {
-    if (element) {
-        element.classList.add(isError ? "success" : "error")
-        element.textContent = msg;
-    }
-    setTimeout(() => {
-        element.textContent = ""
-        element.removeAttribute("class")
-    }, 2500);
+    if (!element || !element.classList) return;
 
+    const className = isError ? "success" : "error";
+    element.classList.add(className);
+    element.textContent = msg;
+
+    setTimeout(() => {
+        if (element && element.classList) {
+            element.textContent = "";
+            element.className = "";
+        }
+    }, 2500);
 };

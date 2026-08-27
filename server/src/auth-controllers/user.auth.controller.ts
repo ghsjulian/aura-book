@@ -5,6 +5,15 @@ import { genHash, matchHashed } from "../functions/password-hashing.js";
 import { createJWT } from "../functions/jwt.genarator.js";
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import jwt, { JwtPayload, TokenExpiredError } from 'jsonwebtoken';
+import { tryCast } from "typescript/unstable/ast";
+
+
+// JWT Token Payload
+interface ResetTokenPayload extends JwtPayload {
+  email: string;
+  type: string;
+}
 
 // Signup Request Interface
 interface SignupRequestData {
@@ -279,3 +288,117 @@ export const updateProfileImage = async (req: AuthenticatedRequest, res: Respons
     })
   }
 }
+
+
+
+export const forgetPassword = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      res.status(400).json({ success: false, message: 'Email address is required.' });
+      return;
+    }
+    const user = await User.findOne({ email: email.trim() })
+    if (!user) {
+      res.status(403).json({ success: false, message: 'No user exixt with this email' });
+      return;
+    }
+
+    const jwtSecret = process.env.JWT_SECRET || '___ghsjulian_dev___';
+    const payload = {
+      email: email.toLowerCase(),
+      type: 'password_reset'
+    };
+    const resetToken = jwt.sign(payload, jwtSecret, { expiresIn: '15m' });
+    const frontendUrl = process.env.CORS_ORIGIN_URL || 'http://localhost:3000';
+    const resetLink = `${frontendUrl}/reset-password?token=${resetToken}`;
+
+    // TODO: Email Sender Will Be Applied Here...
+
+    res.status(200).json({
+      success: true,
+      message: 'Password reset link has been sent.' + resetLink,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error, please try again'
+    });
+  }
+};
+
+
+
+
+export const resetPassword = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const jwtSecret = process.env.JWT_SECRET || '___ghsjulian_dev___';
+    const { token, password } = req?.body;
+
+    if (!token || !password) {
+      res.status(400).json({
+        success: false,
+        message: 'Password & Token Required'
+      });
+      return;
+    }
+
+    if (password.length < 6) {
+      res.status(400).json({
+        success: false,
+        message: 'Password must be at least 6 characters long'
+      });
+      return;
+    }
+
+    let decoded: ResetTokenPayload;
+    try {
+      decoded = jwt.verify(token, jwtSecret) as ResetTokenPayload;
+    } catch (err: any) {
+      if (err.name === 'TokenExpiredError') {
+        res.status(401).json({
+          success: false,
+          message: 'Reset link has expired. Please request a new one.'
+        });
+        return;
+      }
+      res.status(403).json({
+        success: false,
+        message: 'Invalid or corrupted reset token.'
+      });
+      return;
+    }
+
+    if (!decoded || !decoded.email || decoded.type !== 'password_reset') {
+      res.status(403).json({
+        success: false,
+        message: 'Invalid token payload.'
+      });
+      return;
+    }
+    const user = await User.findOne({ email: decoded.email.toLowerCase() });
+    if (!user) {
+      res.status(444).json({
+        success: false,
+        message: 'User account not found.'
+      });
+      return;
+    }
+
+    const hashed = await genHash(password)
+    user!.password = hashed
+    user!.save()
+
+    res.status(200).json({
+      success: true,
+      message: 'Password updated successfully. You can now log in with your new password.'
+    });
+
+  } catch (error: any) {
+    console.error("Reset Password Error:", error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error, please try again'
+    });
+  }
+};

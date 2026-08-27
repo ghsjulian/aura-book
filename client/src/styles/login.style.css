@@ -203,6 +203,17 @@
   fill: var(--primary-sky);
   pointer-events: none;
 }
+.show-pass {
+  outline: none;
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  fill: var(--primary-sky);
+  cursor: pointer;
+}
 
 .form-options {
   display: flex;
@@ -280,6 +291,20 @@
   text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+  .social-login-group .social-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .social-login-group .social-btn svg {
+    order: 2;
+  }
+  .social-login-group .social-btn span {
+    order: 1;
+  }
+}
 @media (max-width: 480px) {
   .login-container {
     padding: 30px 20px;

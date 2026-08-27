@@ -1,5 +1,5 @@
 import { Router, type RequestHandler } from "express";
-import { updateProfileImage, getUser, userLogin, userLogout, userSignup } from "../auth-controllers/user.auth.controller.js";
+import { updateProfileImage, getUser, userLogin, userLogout, userSignup, forgetPassword, resetPassword } from "../auth-controllers/user.auth.controller.js";
 import { isUser } from "../middlewares/is.user.js";
 import { upload } from "../config/multer.config.js";
 
@@ -15,5 +15,7 @@ router.put(
 	upload.single("avatar"),
 	updateProfileImage as unknown as RequestHandler,
 )
+router.post("/forget-password", forgetPassword)
+router.post("/reset-password", resetPassword)
 
 export default router;

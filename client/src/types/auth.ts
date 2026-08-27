@@ -32,3 +32,13 @@ export interface LoginPayload {
 export interface RegisterPayload extends LoginPayload {
     name: string;
 }
+
+export interface logoutInterface {
+    success: boolean
+    message: string
+    user: User | null
+}
+export interface forgetPasswordResponse {
+    success: boolean
+    message: string
+}

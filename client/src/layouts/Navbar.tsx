@@ -2,7 +2,8 @@ import { ArrowRight, MoveRight } from "lucide-react";
 import type { MouseEvent } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { logoutApi, type logoutInterface } from "../services/auth.services";
+import { logoutApi } from "../services/auth.services";
+import { type logoutInterface } from "../types/auth";
 import { logout, setLoading } from "../store/slices/auth.slice";
 
 const Navbar = (isMenu: boolean) => {
