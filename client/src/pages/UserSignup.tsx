@@ -11,12 +11,13 @@ import {
   loginSuccess,
   loginFailure,
 } from "../store/slices/auth.slice";
-import { loginApi } from "../services/auth.services";
+import { signUp } from "../services/auth.services";
 import { NavLink, useNavigate } from "react-router-dom";
 import { EyeOff } from "lucide-react";
 
-const UserLogin = () => {
+const UserSignup = () => {
   const navigate = useNavigate();
+  const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -27,6 +28,10 @@ const UserLogin = () => {
   const handleSubmit = async (event: any): Promise<void> => {
     event.preventDefault();
     if (isLoading) return;
+    if (!name) {
+      showMessage(msgRef.current, false, "User name is required");
+      return;
+    }
 
     const result: AuthValidationResult = validateAuthCredentials(
       email,
@@ -39,7 +44,8 @@ const UserLogin = () => {
     }
 
     dispatch(setLoading(true));
-    const data = await loginApi({
+    const data = await signUp({
+      name: name.trim(),
       email: email.trim(),
       password: password.trim(),
     });
@@ -49,9 +55,8 @@ const UserLogin = () => {
       showMessage(msgRef.current, false, data.message);
       return;
     }
-
+    dispatch(setLoading(false));
     showMessage(msgRef.current, true, data?.message);
-    dispatch(loginSuccess(data));
     setTimeout(() => {
       navigate("/");
     }, 1500);
@@ -62,7 +67,7 @@ const UserLogin = () => {
       <div className="login-container">
         <div className="brand-header">
           <span className="tagline">Aura Beauty & Styling</span>
-          <h1>Welcome Back</h1>
+          <h1>Create An Account</h1>
         </div>
 
         <div className="social-login-group">
@@ -97,10 +102,37 @@ const UserLogin = () => {
         </div>
 
         <div className="divider">
-          <span>or email login</span>
+          <span>or email signup</span>
         </div>
         <div ref={msgRef}></div>
         <form className="login-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <div className="input-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 24 24"
+                fill="none"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="input-icon lucide lucide-user-round-icon lucide-user-round"
+              >
+                <circle cx="12" cy="8" r="5" />
+                <path d="M20 21a8 8 0 0 0-16 0" />
+              </svg>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Alina Lopez"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+              />
+            </div>
+          </div>
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
             <div className="input-wrapper">
@@ -177,18 +209,17 @@ const UserLogin = () => {
                 <div className="spinner"></div>Processing...
               </>
             ) : (
-              "Sign In"
+              "Create Account"
             )}
           </button>
         </form>
 
         <div className="signup-prompt">
-          Don't have an account?{" "}
-          <NavLink to="/user-signup">Book a Consultation</NavLink>
+          Already have an account? <NavLink to="/user-login">Login</NavLink>
         </div>
       </div>
     </section>
   );
 };
 
-export default UserLogin;
+export default UserSignup;

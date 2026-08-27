@@ -7,7 +7,7 @@
   --text-muted: #6c757d;
   --white: #ffffff;
   --border-color: rgba(0, 180, 216, 0.2);
-  --shadow: 0 15px 35px rgba(0, 180, 216, 0.12);
+  /* --shadow: 0 15px 35px rgba(0, 180, 216, 0.12); */
 }
 .spinner {
   width: 24px;

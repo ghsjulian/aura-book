@@ -23,6 +23,11 @@ export interface AuthResponse {
     success: boolean
     message: string
 }
+export interface SignupPayload {
+    name: string
+    email: string;
+    password: string;
+}
 
 export interface LoginPayload {
     email: string;

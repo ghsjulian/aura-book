@@ -6,17 +6,45 @@ import type {
     User,
     logoutInterface,
     forgetPasswordResponse,
+    SignupPayload,
 } from "../types/auth";
 
-export const loginApi = async (
-    credentials: LoginPayload,
-): Promise<AuthResponse> => {
-    const response = await api.post<AuthResponse>(
-        "/auth/user-login",
-        credentials,
-    );
-    return response.data;
+export const signUp = async (credentials: SignupPayload): Promise<AuthResponse> => {
+    try {
+        const response = await api.post<AuthResponse>(
+            "/auth/user-signup",
+            credentials,
+        );
+        return response.data;
+    } catch (error: any) {
+        if (error.response.data) {
+            return error.response.data as AuthResponse
+        }
+        return {
+            success: false,
+            message: "Something went wrong, try again",
+        } as AuthResponse
+    }
 };
+
+export const loginApi = async (credentials: LoginPayload): Promise<AuthResponse> => {
+    try {
+        const response = await api.post<AuthResponse>(
+            "/auth/user-login",
+            credentials,
+        );
+        return response.data;
+    } catch (error: any) {
+        if (error.response.data) {
+            return error.response.data as AuthResponse
+        }
+        return {
+            success: false,
+            message: "Something went wrong, try again",
+        } as AuthResponse
+    }
+}
+
 
 export const registerApi = async (
     userData: RegisterPayload,
