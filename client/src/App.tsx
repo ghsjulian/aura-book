@@ -6,6 +6,7 @@ import ForgetPassword from "./pages/ForgetPassword";
 import EmailSent from "./pages/EmailSent";
 import ReseetNewPassword from "./pages/ReseetNewPassword";
 import UserSignup from "./pages/UserSignup";
+import UserProfile from "./pages/UserProfile";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="user-profile" element={<UserProfile />} />
         </Route>
         <Route path="/user-signup" element={<UserSignup />} />
         <Route path="/user-login" element={<UserLogin />} />
