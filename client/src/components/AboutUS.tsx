@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import "../styles/about-style.css";
 
 const AboutUS = () => {

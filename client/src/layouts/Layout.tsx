@@ -3,7 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import BookConsultation from "../components/BookConsultation";
 import { useAppSelector } from "../store/hooks";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const Layout = () => {
   const location = useLocation();
