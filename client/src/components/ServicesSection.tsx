@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/service.style.css";
+import { useAppDispatch } from "../store/hooks";
+import { setBooking } from "../store/slices/auth.slice";
 
 interface Service {
   id: number;
@@ -97,6 +99,8 @@ const services: Service[] = [
 ];
 
 const ServicesSection: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <section className="services-section">
       <div className="section-header">
@@ -117,7 +121,14 @@ const ServicesSection: React.FC = () => {
             <div className="card-info">
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <a href={service.link || "#"} className="book-btn">
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(setBooking());
+                }}
+                href={service.link || "#"}
+                className="book-btn"
+              >
                 Book Appointment
               </a>
             </div>

@@ -7,6 +7,7 @@ const initialState: AuthState = {
     token: localStorage.getItem('aura-token'),
     isLoading: false,
     error: null,
+    isBooking: false
 };
 
 // 2. Auth Slice
@@ -39,11 +40,14 @@ const authSlice = createSlice({
         clearError: (state: any) => {
             state.error = null;
         },
+        setBooking: (state: any) => {
+            state.isBooking = !state.isBooking
+        }
     },
 });
 
 // Export automatic action creators
-export const { setLoading, loginSuccess, loginFailure, logout, clearError } = authSlice.actions;
+export const { setLoading, loginSuccess, loginFailure, logout, clearError, setBooking } = authSlice.actions;
 
 // Export main reducer
 export default authSlice.reducer;
