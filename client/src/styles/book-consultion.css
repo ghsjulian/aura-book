@@ -190,6 +190,7 @@ textarea {
   .booking-card {
     width: 95%;
     margin: auto auto;
+    margin-top: 18rem;
   }
 }
 @media (max-width: 480px) {
