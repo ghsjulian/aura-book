@@ -6,11 +6,7 @@ import {
   type AuthValidationResult,
 } from "../utils/validator";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import {
-  setLoading,
-  loginSuccess,
-  loginFailure,
-} from "../store/slices/auth.slice";
+import { setLoading, loginFailure } from "../store/slices/auth.slice";
 import { signUp } from "../services/auth.services";
 import { NavLink, useNavigate } from "react-router-dom";
 import { EyeOff } from "lucide-react";
