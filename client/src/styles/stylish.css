@@ -48,7 +48,7 @@
   background-color: var(--card-bg);
   border-radius: 16px;
   padding: 25px;
-  box-shadow: 0 10px 25px var(--shadow-color);
+  box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
@@ -60,11 +60,6 @@
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-}
-
-.profile-grid-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 18px 35px rgba(0, 168, 204, 0.15);
 }
 
 @keyframes zoomIn {

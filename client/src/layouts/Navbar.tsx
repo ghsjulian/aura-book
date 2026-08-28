@@ -66,7 +66,7 @@ const Navbar = (isMenu: boolean) => {
           <NavLink to="/user-signup">Signup</NavLink>
         </>
       )}
-      <NavLink className="book-btn" to="/book-stylish">
+      <NavLink className="book-btn" to="stylish">
         Book Stylish <MoveRight size={20} style={{ marginLeft: "4px" }} />
       </NavLink>
     </nav>

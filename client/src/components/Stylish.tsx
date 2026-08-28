@@ -106,6 +106,98 @@ const Stylish = () => {
               Book Consultation
             </NavLink>
           </div>
+          <div className="profile-grid-card">
+            <div className="card-avatar-wrapper">
+              <img src="/ghs.png" alt="Clara Miller" className="card-avatar" />
+              <span
+                className="availability-badge"
+                title="Available Today"
+              ></span>
+            </div>
+            <h2 className="card-name">Clara Miller</h2>
+            <span className="card-role">Bridal Makeup Artist</span>
+            <p className="card-desc">
+              Creating flawless HD makeup looks for weddings, galas, and
+              high-fashion photo sessions tailored to every skin tone.
+            </p>
+            <div className="card-tags">
+              <span className="tag">Bridal</span>
+              <span className="tag">HD Makeup</span>
+              <span className="tag">Events</span>
+            </div>
+            <NavLink to="#" className="card-btn">
+              Book Consultation
+            </NavLink>
+          </div>
+          <div className="profile-grid-card">
+            <div className="card-avatar-wrapper">
+              <img src="/ghs.png" alt="Clara Miller" className="card-avatar" />
+              <span
+                className="availability-badge"
+                title="Available Today"
+              ></span>
+            </div>
+            <h2 className="card-name">Clara Miller</h2>
+            <span className="card-role">Bridal Makeup Artist</span>
+            <p className="card-desc">
+              Creating flawless HD makeup looks for weddings, galas, and
+              high-fashion photo sessions tailored to every skin tone.
+            </p>
+            <div className="card-tags">
+              <span className="tag">Bridal</span>
+              <span className="tag">HD Makeup</span>
+              <span className="tag">Events</span>
+            </div>
+            <NavLink to="#" className="card-btn">
+              Book Consultation
+            </NavLink>
+          </div>
+          <div className="profile-grid-card">
+            <div className="card-avatar-wrapper">
+              <img src="/ghs.png" alt="Clara Miller" className="card-avatar" />
+              <span
+                className="availability-badge"
+                title="Available Today"
+              ></span>
+            </div>
+            <h2 className="card-name">Clara Miller</h2>
+            <span className="card-role">Bridal Makeup Artist</span>
+            <p className="card-desc">
+              Creating flawless HD makeup looks for weddings, galas, and
+              high-fashion photo sessions tailored to every skin tone.
+            </p>
+            <div className="card-tags">
+              <span className="tag">Bridal</span>
+              <span className="tag">HD Makeup</span>
+              <span className="tag">Events</span>
+            </div>
+            <NavLink to="#" className="card-btn">
+              Book Consultation
+            </NavLink>
+          </div>
+          <div className="profile-grid-card">
+            <div className="card-avatar-wrapper">
+              <img src="/ghs.png" alt="Clara Miller" className="card-avatar" />
+              <span
+                className="availability-badge"
+                title="Available Today"
+              ></span>
+            </div>
+            <h2 className="card-name">Clara Miller</h2>
+            <span className="card-role">Bridal Makeup Artist</span>
+            <p className="card-desc">
+              Creating flawless HD makeup looks for weddings, galas, and
+              high-fashion photo sessions tailored to every skin tone.
+            </p>
+            <div className="card-tags">
+              <span className="tag">Bridal</span>
+              <span className="tag">HD Makeup</span>
+              <span className="tag">Events</span>
+            </div>
+            <NavLink to="#" className="card-btn">
+              Book Consultation
+            </NavLink>
+          </div>
         </div>
       </div>
     </section>

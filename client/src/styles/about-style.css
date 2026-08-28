@@ -5,7 +5,7 @@
   /* max-width: 900px; */
   padding: 35px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px var(--shadow-color);
+  box-shadow: var(--shadow);
   display: grid;
   grid-template-columns: 520px 1fr;
   gap: 30px;
@@ -14,11 +14,6 @@
     transform 0.3s ease,
     box-shadow 0.3s ease;
   margin: 1.5rem auto;
-}
-
-.about-wrapper:hover {
-  transform: scale(1.005);
-  box-shadow: 0 15px 30px var(--shadow-color);
 }
 
 @keyframes zoomIn {
