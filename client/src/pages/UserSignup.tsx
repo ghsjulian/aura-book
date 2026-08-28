@@ -66,7 +66,7 @@ const UserSignup = () => {
           <h1>Create An Account</h1>
         </div>
 
-        <div className="social-login-group">
+        {/* <div className="social-login-group">
           <a href="#" className="social-btn">
             <svg viewBox="0 0 24 24">
               <path
@@ -99,7 +99,8 @@ const UserSignup = () => {
 
         <div className="divider">
           <span>or email signup</span>
-        </div>
+        </div> */}
+
         <div ref={msgRef}></div>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">

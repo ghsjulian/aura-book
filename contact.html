@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Beauty & Styling - Contact Us</title>
+  <style>
+    :root {
+      --primary-color: #00a8cc;
+      --primary-hover: #008cae;
+      --bg-color: #e6f7ff;
+      --card-bg: #ffffff;
+      --text-main: #333333;
+      --text-muted: #666666;
+      --input-bg: #eef6fc;
+      --border-color: #d1e5f0;
+      --shadow-color: rgba(0, 0, 0, 0.08);
+      --badge-bg: rgba(0, 168, 204, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+
+    /* Outer Container Card */
+    .contact-wrapper {
+      background-color: var(--card-bg);
+      width: 100%;
+      max-width: 900px;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px var(--shadow-color);
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 30px;
+      animation: zoomIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-wrapper:hover {
+      transform: scale(1.005);
+      box-shadow: 0 15px 30px var(--shadow-color);
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.88);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* LEFT SIDE: Contact Information & Hours */
+    .contact-left {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border-color);
+      padding-right: 30px;
+    }
+
+    .header-text h3 {
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .header-text h1 {
+      font-size: 1.6rem;
+      color: #1a5b6e;
+      font-family: Georgia, serif;
+      margin-bottom: 20px;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .info-item {
+      background-color: var(--input-bg);
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .info-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .info-value {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .hours-card {
+      background-color: var(--badge-bg);
+      padding: 14px;
+      border-radius: 10px;
+      margin-top: auto;
+    }
+
+    .hours-card h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1a5b6e;
+      margin-bottom: 6px;
+    }
+
+    .hours-card p {
+      font-size: 0.82rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* RIGHT SIDE: Message Form */
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background-color: var(--input-bg);
+      font-size: 0.9rem;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.2s ease-in-out;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-color);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(0, 168, 204, 0.15);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+        padding: 25px 20px;
+        gap: 25px;
+      }
+
+      .contact-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-right: 0;
+        padding-bottom: 25px;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contact-wrapper">
+    
+    <!-- LEFT SIDE: Studio Details -->
+    <div class="contact-left">
+      <div class="header-text">
+        <h3>Aura Studio</h3>
+        <h1>Get in Touch</h1>
+      </div>
+
+      <div class="info-list">
+        <div class="info-item">
+          <div class="info-label">📍 Address</div>
+          <div class="info-value">123 Beauty Lane, Suite 4</div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">📞 Phone</div>
+          <div class="info-value">+123 456 789</div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">✉️ Email</div>
+          <div class="info-value">support@aurabeauty.com</div>
+        </div>
+      </div>
+
+      <div class="hours-card">
+        <h4>Opening Hours</h4>
+        <p>Mon – Fri: 09:00 AM – 08:00 PM<br>Saturday: 10:00 AM – 06:00 PM<br>Sunday: Closed</p>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: Send Message Form -->
+    <div class="contact-right">
+      <form action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Consultation Inquiry, General Question..." required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="How can our styling team help you today?" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+</html>

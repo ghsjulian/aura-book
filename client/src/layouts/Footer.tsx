@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-grid">
         <div className="footer-col">
-          <h4 style={{ fontSize: "1.4rem", fontWeight: 800 }}>GlowBook</h4>
+          <h4 style={{ fontSize: "1.4rem", fontWeight: 800 }}>Aura Book</h4>
           <p>
             Modern & elegant booking solution for world-class beauty lounges.For
             more info please visit our stylish page and select your favourite

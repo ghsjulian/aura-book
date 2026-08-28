@@ -45,6 +45,10 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  animation: zoomIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
 }
 header .app-logo {
   cursor: pointer;
@@ -73,6 +77,11 @@ nav a {
   font-weight: 700;
   border-bottom: 2px solid transparent;
   transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+nav a.active {
+  color: #0035f5;
+  border-bottom: 2px solid #0035f5;
+  font-weight: 900;
 }
 nav a:hover {
   color: var(--primary-sky-hover);
@@ -130,6 +139,10 @@ main {
   overflow: hidden;
   background: #1d93ab7b;
   border-radius: 8px;
+  animation: zoomIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
 }
 .slide {
   position: absolute;
